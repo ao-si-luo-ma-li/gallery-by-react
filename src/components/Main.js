@@ -91,8 +91,31 @@ class ImgFigure extends React.Component {
 }
 
 //单个控制按钮组件
-class Controller extends React.Component {
+class ControllerUnit extends React.Component {
 
+	handleClick(e) {
+		// 阻止冒泡，阻止默认事件
+		e.stopPropagation();
+		e.preventDefault();
+
+		//点击时，对应图片如果没有居中，则让其居中。否则就让其翻转
+		if (this.props.arrange.isCenter) {
+			this.props.inverse();
+		} else {
+			this.props.center();
+		}
+
+	}
+	render() {
+
+		let controrlClassName = 'controller-unit';
+		controrlClassName += this.props.arrange.isCenter ? ' is-Center' : '';
+		controrlClassName += this.props.arrange.isInverse ? ' isInverse' : '';
+
+		return (
+			<span className={controrlClassName} onClick={this.handleClick.bind(this)}></span>
+		)
+	}
 }
 
 
@@ -309,11 +332,17 @@ class GalleryByReactApp extends React.Component {
 				}
 			}
 
-			//使用imgFigure组件填充数组，下面 {...} 是js表达式，一并插入  
+			/*使用imgFigure组件填充数组,下面大括号是js表达式，一并插入*/
 			imgFigure.push(<ImgFigure data={value} key={'imageFigures'+index}
 			 ref={'imageFigures'+index} arrange={this.state.imgsArrangeArr[index]}
-			  inverse={this.inverse(index)} center={this.center(index)}/>)
-		}.bind(this))
+			  inverse={this.inverse(index)} center={this.center(index)} />)
+
+			//使用ControllerUnit组件填充数组,向控制组件传入 操作图片的方法和相应的数组
+			controllerUnits.push(<ControllerUnit key={'controller'+index} arrange={this.state.imgsArrangeArr[index]}
+			  inverse={this.inverse(index)} center={this.center(index)} />)
+
+		}.bind(this));
+
 
 
 		return (
