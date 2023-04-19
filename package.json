@@ -16,7 +16,9 @@
     "clean": "rimraf dist/*",
     "release:major": "npm version major && npm publish && git push --follow-tags",
     "release:minor": "npm version minor && npm publish && git push --follow-tags",
-    "release:patch": "npm version patch && npm publish && git push --follow-tags"
+    "release:patch": "npm version patch && npm publish && git push --follow-tags",
+    "serve:start": "serve -l 3001",
+    "dev": "webpack-dev-server --hot --inline"
   },
   "repository": "",
   "keywords": [],
@@ -51,7 +53,8 @@
     "karma-webpack": "^1.7.0",
     "minimist": "^1.2.0",
     "mocha": "^3.0.0",
-    "node-sass": "^3.10.1",
+    "node-sass": "^4.14.1",
+    "sass": "^0.5.0",
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
@@ -69,7 +72,8 @@
     "core-js": "^2.0.0",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "serve": "^8.2.0"
   },
   "engines": {
     "node": ">=5.0.0 <8.0.0"

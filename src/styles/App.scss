@@ -63,19 +63,30 @@ html,body{
 
       &.inverse{
         transform: translateX(100%) rotateY(180deg);
+
+        .img-body {
+          opacity: 0;
+        }
       }
+    }
+
+    .img-body {
+      position: relative;
+      z-index: 1;
+      opacity: 1;
+      transition: all .6s ease-in-out;
+    }
+
+    .img-title{
+              
+      margin: 20px 0 0 0;
+      text-align: center;
+      color: #a7a0a2;
+      font-size: 16px;
     }
     
     figcaption{
       text-align: center;
-
-      .img-title{
-                
-        margin: 20px 0 0 0;
-
-        color: #a7a0a2;
-        font-size: 16px;
-      }
 
       .img-back{
         position:absolute;

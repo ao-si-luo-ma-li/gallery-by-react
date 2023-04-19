@@ -76,9 +76,11 @@ class ImgFigure extends React.Component {
 		//在es6中需要改变上下文环境 this.handleClick.bind(this)，否则会绑定到触发事件的div元素上
 		return (
 			<figure className={imgFigureClassName} style={styleObj} onClick={this.handleClick.bind(this)}>
-				<img src={this.props.data.imageURL} alt={this.props.data.title}/>
-				<figcaption>
+				<div className='img-body'>
+					<img src={this.props.data.imageURL} alt={this.props.data.title}/>
 					<h2 className="img-title">{this.props.data.title}</h2>
+				</div>
+				<figcaption>
 					<div className="img-back" onClick={this.handleClick.bind(this)}>
 						<p>
 							{this.props.data.desc}
